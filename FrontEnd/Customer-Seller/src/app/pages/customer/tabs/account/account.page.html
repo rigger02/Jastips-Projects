@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" *ngIf="isLogin">
+      <ion-button fill="clear" (click)="logout()">
+        <ion-icon name="power-outline" color="mediun" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Manage Akun</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!isLogin" fullscreen="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="container">
+    <ion-button color="tertiary" shape="round" routerLink="/onboard">
+      Login / Register
+    </ion-button>
+  </div>
+
+</ion-content>
+
+<ion-content class="ion-padding" *ngIf="isLogin">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card color="secondary">
+    <ion-card-header>
+      <ion-card-title>Muhamad Badrio Taupani</ion-card-title>
+      <ion-card-subtitle>085885436239</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  
+  <ion-row>
+    <ion-col size="12">
+      <ion-text color="medium">
+        <h4>Akun</h4>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row routerLink="/c-tabs/orders">
+    <ion-col size="12">
+      <ion-item button detail="true">
+        <ion-label>
+          <h3>Pesanan</h3>
+        </ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row routerLink="/c-tabs/address">
+    <ion-col size="12">
+      <ion-item button detail="true">
+        <ion-label>
+          <h3>Alamat Saya</h3>
+        </ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item button detail="true" href="https://drive.google.com/drive/folders/17dd39F0LjuYIDsLa7iu4WXhTdacwiSGI?usp=sharing">
+        <ion-label>
+          <h3>Deliver IT</h3>
+        </ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item button detail="true">
+        <ion-label>
+          <h3>Bantuan & Laporan Saya</h3>
+        </ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-content>

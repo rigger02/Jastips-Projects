@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- <ion-title>items</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="c-tabs" ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-restaurant-detail [data]="stores" [isLoading]="isLoading"></app-restaurant-detail>
+
+  <app-loading-restaurant *ngIf="isLoading"></app-loading-restaurant>
+  <app-empty-screen [model]="model" *ngIf="!isLoading && productStore?.length == 0"></app-empty-screen>
+
+  <ion-list lines="none">
+    <ng-container *ngFor="let product of productStore; let i = index">
+      <app-item 
+        [product]="product"
+        [index]="i"
+        (add)="quantityPlus($event)"
+        (minus)="quantityMinus($event)">
+      </app-item>
+    </ng-container>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer *ngIf="cartData?.totalProduct">
+  <ion-toolbar color="success">
+    <ion-label color="white">
+      <h4>{{cartData?.totalProduct}} Item<span *ngIf="cartData?.totalProduct > 1">s</span> | {{rupiah(cartData?.totalPrice)}}</h4>
+      <ion-text color="light">
+        <p>Extra charges may apply</p>
+      </ion-text>
+    </ion-label>
+    <ion-button slot="end" fill="clear" color="white" (click)="viewCart()">
+      <ion-icon slot="end" name="basket-outline"></ion-icon>
+      VIEW CART
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border" >
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="header">
+    <h1>Masuk</h1>
+    <p>Silahkan masuk terlebih dahulu</p>
+  </div>
+
+  <form>
+    <div class="form-field">
+      <ion-icon name="call-outline"></ion-icon>
+      <ion-input type="text" [(ngModel)]="form.phone_tmu" [ngModelOptions]="{standalone: true}" placeholder="Masukan telepon anda"></ion-input>
+    </div>
+    <div class="form-field">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <ion-input type="password" [(ngModel)]="form.password" [ngModelOptions]="{standalone: true}" placeholder="Masukan password anda"></ion-input>
+    </div>
+
+    <ion-button type="submit" expand="block" (click)="doLogin()" color="secondary">Masuk</ion-button>
+
+    <!-- <div class="forgot-password">
+      <a routerLink="/forgot-password">Forgot password</a>
+    </div> -->
+  </form>
+</ion-content>

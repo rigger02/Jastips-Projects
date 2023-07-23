@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="header">
+    <h1>Daftar</h1>
+    <p>Silahkan isi data dengan benar</p>
+  </div>
+  <br>
+  <form>
+    <div class="form-field">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-input type="email" placeholder="Masukan nama anda (sesuai KTP)"></ion-input>
+    </div>
+    <div class="form-field">
+      <ion-icon name="mail-outline"></ion-icon>
+      <ion-input type="email" placeholder="Masukan telepon anda"></ion-input>
+    </div>
+    <div class="form-field">
+      <ion-icon name="key-outline"></ion-icon>
+      <ion-input type="password" placeholder="Masukan password anda"></ion-input>
+    </div>
+    <br>
+    <ion-button expand="block" (click)="register()" color="warning">Daftar sekarang</ion-button>
+  </form>
+</ion-content>

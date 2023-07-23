@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title>Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col size="12">
+      <ion-button shape="round" color="light">
+        <ion-icon slot="end" name="chevron-down"></ion-icon>
+        Status</ion-button>
+    </ion-col>
+  </ion-row>
+  <div *ngFor="let order of orders">
+    <ion-item class="ion-margin-top" (click)="orderDetail(order?.transaction)">
+      <ion-thumbnail slot="start">
+        <img [src]="order?.image_tms ? order?.image_tms : 'assets/imgs/1.jpg'"/>
+      </ion-thumbnail>
+      <ion-label>
+        <div class="flexText">
+          <span>{{order?.name_tms}}</span>
+          <p class="pStyle">{{rupiah(order?.price)}}</p>
+        </div>
+        <ion-text >
+          <p class="pStyle">{{order?.quantity}} Items</p>
+          <p class="pStyle">{{ order?.product }}</p>
+        </ion-text>
+        <ion-text color="medium">
+          <span>{{ order?.date_ttop }}</span>
+          <p class="pStyle">{{ order?.time_ttop }}</p>
+        </ion-text>
+        <div class="chip">
+          <ion-chip *ngIf="order?.status_ttop == 'delivered'" color="success">Selesai</ion-chip>
+          <ion-chip *ngIf="order?.status_ttop == 'pending'" color="danger">Pending</ion-chip>
+          <ion-chip *ngIf="order?.status_ttop == 'process'" color="warning">Process</ion-chip>
+          <ion-chip *ngIf="order?.status_ttop == 'onTheWay'" color="primary" class="otw">Dalam perjalanan</ion-chip>
+        </div>
+
+      </ion-label>
+    </ion-item>
+  </div>
+</ion-content>

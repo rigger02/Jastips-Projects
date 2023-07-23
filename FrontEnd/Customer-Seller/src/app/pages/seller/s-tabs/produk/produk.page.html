@@ -1,0 +1,81 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="end" id="tambah-modal">
+      <ion-button fill="clear">
+        <ion-icon name="add-outline" color="mediun" slot="icon-only" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Daftar Produk</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-row>
+    <ion-col size="12">
+      <ion-button shape="round" color="light">
+        <ion-icon slot="end" name="chevron-down"></ion-icon>
+        Status</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-item *ngFor="let product of productStore" class="ion-padding-top">
+    <ion-thumbnail slot="start">
+      <img [src]="product?.image_ttps ? product.image_ttps : 'assets/imgs/1.jpg'" />
+    </ion-thumbnail>
+    <ion-label>
+      <!-- <h4>{{product?.name}}</h4> -->
+      {{product?.name_ttps}}
+      <p class="ion-text-wrap">{{product?.desc}}</p>
+      <ion-text><p>{{rupiah(product?.price_ttps)}}</p></ion-text>
+    </ion-label>
+    <div class="chip">
+      <ion-chip color="success" *ngIf="product?.status_ttps === 'publish'" (click)="unpublish(product?.id_ttps)">Publish</ion-chip>
+      <ion-chip color="warning" *ngIf="product?.status_ttps === 'unpublish'" (click)="publish(product?.id_ttps)">Unpublish</ion-chip>
+    </div>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button (click)="editProduct(product?.id_ttps)" color="success" >Edit</ion-button>
+        <ion-button (click)="deleteProduct(product?.id_ttps)" color="danger" >Hapus</ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-text class="add" color="tertiary" class="ion-margin-end" (click)="editProduct()">Edit</ion-text>
+      <ion-text class="add" color="danger" (click)="deleteProduct(product?.id_ttps)">Hapus</ion-text>
+    </ion-row> -->
+  </ion-item>
+
+  <ion-modal #modal trigger="tambah-modal" [initialBreakpoint]="1" [breakpoints]="[0, 0.25, 0.5, 1]">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title class="ion-text-center">Tambah Product</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="uploadProduct()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="form-field">
+          <ion-input type="text" [(ngModel)]="form.name_ttps" [ngModelOptions]="{standalone: true}" placeholder="Nama Produk"></ion-input>
+        </div>
+        <div class="form-field">
+          <ion-input type="text" [(ngModel)]="form.price_ttps" [ngModelOptions]="{standalone: true}" placeholder="harga"></ion-input>
+        </div> 
+
+        <ion-card class="ion-padding" (click)="getPicture()">
+          <ion-thumbnail>
+          <img [src]=data?.image_ttps *ngIf="data.image_ttps"/>
+          <img src="assets/images/camera.png" class="noImage" *ngIf="!data.image_ttps"/>
+          </ion-thumbnail>
+        </ion-card>
+
+        
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

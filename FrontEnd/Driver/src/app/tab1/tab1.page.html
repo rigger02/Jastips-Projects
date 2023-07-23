@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">
+      Histori Pesanan
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let order of history">
+    <ion-card-header>
+      <ion-card-title color="dark">Pesanan Selesai</ion-card-title>
+      <ion-card-subtitle color="dark">
+        <p>Pembeli: {{order?.name_ttca}}</p>
+        <p>Alamat: {{order?.dynamic_ttca}}, {{order?.static_ttca}}</p>
+        <p>No WhatsApp: {{order?.phone_ttca}}</p>
+        <p>Terkirim: {{order?.date}}, {{order?.time}} WIB</p>
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

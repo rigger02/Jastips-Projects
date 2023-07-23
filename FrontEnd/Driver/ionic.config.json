@@ -1,0 +1,7 @@
+{
+  "name": "DriverPage",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

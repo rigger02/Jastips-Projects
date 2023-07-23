@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Tambah Alamat</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="form-field">
+    <ion-input type="text" [(ngModel)]="form.name_ttca" [ngModelOptions]="{standalone: true}" placeholder="Nama Lengkap"></ion-input>
+  </div>
+  <div class="form-field">
+    <ion-input type="text" [(ngModel)]="form.phone_ttca" [ngModelOptions]="{standalone: true}" placeholder="No Telpon"></ion-input>
+  </div>
+  <div class="form-field">
+    <ion-input type="text" [(ngModel)]="form.static_ttca" [ngModelOptions]="{standalone: true}" placeholder="Provinsi, Kota, Kecamatan"></ion-input>
+  </div> 
+  <div class="form-field">
+    <ion-input type="text" [(ngModel)]="form.dynamic_ttca" [ngModelOptions]="{standalone: true}" placeholder="Jl,Block, No Rumah"></ion-input>
+  </div>         
+</ion-content>

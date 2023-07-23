@@ -1,0 +1,100 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card class="box1">
+          <ion-card-header>
+            <ion-card-title color="tertiary"><b>Pesanan</b></ion-card-title>
+            <ion-card-subtitle><b>14</b></ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+          <ion-card class="box1">
+            <ion-card-header>
+              <ion-card-title color="tertiary"><b>Produk</b></ion-card-title>
+              <ion-card-subtitle><b>5</b></ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+            </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="box box3">
+    <apx-chart
+      [chart]="areaOptions.chart"
+      [series]="areaOptions.series"
+      [stroke]="areaOptions.stroke"
+      [xaxis]="areaOptions.xaxis"
+      [title]="areaOptions.title"
+      [subtitle]="areaOptions.subtitle"
+      [fill]="areaOptions.fill"
+      [tooltip]="areaOptions.tooltip"
+      [colors]="areaOptions.colors"
+    ></apx-chart>
+  </div>
+
+
+  <ion-text color="primary">
+    <h1 class="ion-margin-horizontal"><b>Menu Favorit</b></h1>
+  </ion-text>
+  <ion-grid>
+    <ion-row>
+      <ion-segment [scrollable]="true">
+        <ion-col size="5.5">
+        <ion-card class="card">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <ion-card-header>
+            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            text
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+        <ion-col size="5.5">
+        <ion-card class="card">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <ion-card-header>
+            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            text
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+        <ion-col size="5.5">
+        <ion-card class="card">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <ion-card-header>
+            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            text
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      </ion-segment>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>

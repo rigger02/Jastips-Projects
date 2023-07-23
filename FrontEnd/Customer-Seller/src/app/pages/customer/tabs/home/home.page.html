@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-title color="dark">
+      <ion-searchbar routerLink="/c-tabs/search"
+      animated="true"
+      debounce="800"
+      #searchInput
+      (ionChange)="onSearchChange($event)"></ion-searchbar>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="isLoading"><ion-skeleton-text animated style="height: 25vh;"></ion-skeleton-text></div>
+  <app-loading-restaurant *ngIf="isLoading"></app-loading-restaurant>
+  
+  <app-banner *ngIf="!isLoading" [bannerImages]="banners"></app-banner>
+
+  <ion-list *ngIf="!isLoading">
+    <ion-list-header class="ion-margin-bottom">
+      <ion-label>
+        <h4>Restaurants Nearby</h4>
+        <p>Discover unique tastes near you</p>
+      </ion-label>
+    </ion-list-header>
+    <ion-item-group *ngIf="stores?.length > 0">
+      <app-restaurant
+        *ngFor="let store of stores"
+        [stores]="store"
+        (click)="storeDetail(store.id_tms)"></app-restaurant>
+    </ion-item-group>
+  </ion-list>
+
+</ion-content>

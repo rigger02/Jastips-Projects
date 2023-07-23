@@ -1,0 +1,89 @@
+<ion-content color="medium">
+
+  <div class="header">
+    <div class="toolbar">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="s-tabs/orders"></ion-back-button>
+      </ion-buttons>
+      <ion-item lines="none">
+        <ion-icon name="bag-handle" slot="start"></ion-icon>
+        <ion-label>Detail</ion-label>
+      </ion-item>
+      <div color="medium" class="inv">
+        <h5>{{date}}</h5>
+        <h5>{{time}}</h5>
+      </div>
+    </div>
+  </div>
+  
+  <ion-card class="ion-padding-horizontal destination">
+    <ion-text color="medium" class="tDetail">
+      <h4>Detail Pengiriman</h4>
+    </ion-text>
+    <ion-chip color="primary" mode="ios" outline="true">
+      <ion-label>{{status}}</ion-label>
+    </ion-chip>
+    <ion-item lines="none">
+      <ion-icon name="restaurant" slot="start" class="ion-no-padding" color="primary"></ion-icon>
+      <ion-text color="medium">
+        <p class="ion-no-margin">Alamat Resto</p>
+        <ion-label color="tertiary">{{store}}, {{sAddress}}</ion-label>
+      </ion-text>
+    </ion-item>
+    <ion-icon name="ellipsis-vertical-outline"  color="medium" class="toIcon"></ion-icon>
+    <ion-item lines="none" class="user-address">
+      <ion-icon name="location" slot="start" class="ion-no-padding" color="danger"></ion-icon>
+      <ion-text color="medium">
+        <p class="ion-no-margin">Alamat Resto</p>
+        <ion-label color="tertiary">{{customer}}, {{cAddress}}</ion-label>
+      </ion-text>
+    </ion-item>
+    
+  </ion-card>
+    <ion-card class="orders" class="ion-padding-horizontal">
+      <ion-text color="medium" class="tDetail">
+        <h4>Detail Pesanan</h4>
+      </ion-text> 
+
+      <div class="order">
+        <div color="medium" class="product" *ngFor="let order of orders">
+          <h4>{{order?.name_ttps}}</h4>
+          <h4 class="qty">{{order?.qty_ttop}}</h4>
+        </div>
+      </div>
+    </ion-card>
+    
+    <ion-card class="orders" class="ion-padding-horizontal">
+      <ion-text color="medium" class="tDetail">
+        <h4>Detail Pembayaran</h4>
+      </ion-text> 
+
+      <div class="order">
+        <div color="medium" class="product">
+          <h4>Harga</h4>
+          <h4 class="qty">{{rupiah(harga)}}</h4>
+        </div>
+        <div color="medium" class="product">
+          <h4>Ongkir</h4>
+          <h4 class="qty">{{rupiah(ongkir)}}</h4>
+        </div>
+        <div class="line dashedBorderBottom"></div>
+        <div color="medium" class="product">
+          <h4>Total</h4>
+          <h4 class="qty">{{rupiah(total)}}</h4>
+        </div>
+      </div>
+    </ion-card>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="status == 'pending'">
+  <ion-toolbar color="medium" >
+    <ion-button (click)="takeOrder()" expand="block" fill="solid" shape="round" color="secondary">
+      Terima Pesanan
+    </ion-button>
+    <ion-button (click)="refuseOrder()" expand="block" fill="solid" shape="round" color="danger">
+      Tolak Pesanan
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

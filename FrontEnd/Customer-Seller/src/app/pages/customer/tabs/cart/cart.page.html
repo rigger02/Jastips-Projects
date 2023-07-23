@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="tertiary">Cart</ion-title>
+    <ion-buttons slot="start" *ngIf="urlCheck && urlCheck != 'c-tabs'">
+      <ion-back-button [defaultHref]="getPreviousUrl()" (click)="reloadPrev()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-empty-screen *ngIf="!model?.store"></app-empty-screen>
+
+  <ng-container *ngIf="model?.store">
+    <ion-list lines="none" class="borderBottomSmall">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-img [src]="model?.store?.image_tms ? model.store.image_tms : 'assets/imgs/1.jpg'"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <ion-text><h4>{{model?.store?.name_tms}}</h4></ion-text>
+          <ion-note>{{model?.store?.address_tms}}</ion-note>
+        </ion-label>
+      </ion-item>
+      <app-cart-item 
+        *ngFor="let product of model?.productStore; let i = index"
+        [product]="product"
+        [index]="i"
+        (add)="quantityPlus($event)"
+        (minus)="quantityMinus($event)">
+      </app-cart-item>
+    </ion-list>
+  
+    <ion-item lines="none" class="borderBottom">
+      <ion-icon slot="start" name="list-outline"></ion-icon>
+      <ion-input type="text" placeholder="Any instructions? We will try our best" [(ngModel)]="instruction"></ion-input>
+    </ion-item>
+  
+    <ion-list class="borderBottom">
+      <ion-list-header>
+        <ion-label color="tertiary">Detail Pembayaran</ion-label>
+      </ion-list-header>
+      <ion-item lines="none">
+        <ion-label color="dark">Item Total</ion-label>
+        <ion-text slot="end" color="dark">{{rupiah(model?.totalPrice)}}</ion-text>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label color="dark">Delivery fee</ion-label>
+        <ion-text slot="end" color="dark">{{rupiah(model?.deliveryCharge)}}</ion-text>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label color="dark">To Pay</ion-label>
+        <ion-text slot="end" color="dark"><h5>{{rupiah(model?.grandTotal)}}</h5></ion-text>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+</ion-content>
+
+<ion-footer *ngIf="model?.productStore">
+  <ion-toolbar>
+    <ion-row *ngIf="!model?.address">
+      <ion-col size="6">
+        <ion-button expand="block" fill="outline" color="success" (click)="addAddress()">
+          ADD ADDRESS
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" (click)="changeAddress()">
+          CHANGE ADDRESS
+        </ion-button>
+      </ion-col>
+    </ion-row>    
+    <ion-item lines="none" *ngIf="model?.address">
+      <ion-button slot="end" size="small" fill="clear" (click)="addAddress()">CHANGE</ion-button>
+      <ion-icon slot="start" name="home-outline"></ion-icon>
+      <ion-label>
+        <h5>Deliver to HOME</h5>
+        <ion-text color="medium"><p>{{ model?.address.static_ttca }}</p></ion-text>
+        <ion-text color="medium"><p>{{ model?.address.dynamic_ttca }}</p></ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-row>
+      <ion-col size="6" class="ion-no-padding" (click)="scrollToBottom()">
+        <ion-item lines="none" color="light" class="ion-no-padding">
+          <ion-label>
+            <h6>{{rupiah(model?.grandTotal)}}</h6>
+            <ion-text color="secondary">
+              VIEW DETAILED BILL
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center colStyle" (click)="makeOrder()">
+        <ion-button color="white" fill="clear">Buat Pesanan</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

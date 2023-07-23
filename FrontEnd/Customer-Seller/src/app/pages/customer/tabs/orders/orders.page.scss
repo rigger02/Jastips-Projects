@@ -1,0 +1,45 @@
+.flexText{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+ion-item {
+    font-size: 0.8rem;
+    ion-thumbnail {
+        height: 14vh;
+        width: 25vw;
+        img {
+            border-radius: 5px;
+            height: 100%;
+            width: 100%;
+        }
+    }
+    h4 {
+        font-size: 1rem;
+        // font-weight: bold;
+    }
+    .chip{
+        position: absolute;
+        bottom: 10px;
+        right: 5px;
+        
+        ion-chip{
+            font-size: 13px;
+            
+        }
+        .otw{
+            font-size: 11px;
+        }
+    }
+}
+.distance {
+    font-size: 0.8rem;
+    padding-top: 0.2vh;
+}
+
+.pStyle {
+    padding-bottom: 0.5vh;
+    font-size: 0.82rem !important;
+}

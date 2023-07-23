@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="c-tabs" (click)="reloadPrev()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <!-- Image -->
+  <div class="img-container">
+    <ion-img src="../../../assets/images/onb.png"></ion-img>
+  </div>
+
+  <!-- Message -->
+  <div class="message-container">
+    <h1>Dapatkan <span class="text-warning">barang</span>
+      <br>yang anda inginkan
+      <br><span class="text-danger">dari rumah</span>
+    </h1>
+  </div>
+
+  <!-- Buttons -->
+  <div>
+    <ion-button expand="block" color="secondary" class="ion-margin-bottom" routerLink="/login">Masuk</ion-button>
+    <ion-button expand="block" color="primary"  fill="outline" class="ion-margin-bottom" routerLink="/register">Daftar</ion-button>
+  </div>
+  
+  <!-- Other logins
+  <div class="social-login-container">
+    <p>atau login dengan</p>
+    <div class="social">
+      <div class="social-icon">
+        <ion-img src="../../../assets/icon/google.png" (click)="gLogin()"></ion-img>
+      </div>
+      <div class="social-icon">
+        <ion-img src="../../../assets/icon/fb.png" (click)="fLogin"></ion-img>
+      </div>
+    </div>
+  </div> -->
+</ion-content>

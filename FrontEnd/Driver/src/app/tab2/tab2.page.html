@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">
+      Pesanan Baru
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-card  *ngFor="let order of orders" (click)="orderDetail(order?.transaction_ttop)">
+      <img [src]="'https://panzlight.net/' + order?.image_tms" />
+      <ion-card-header>
+        <ion-icon class="store" name="storefront"></ion-icon>
+        <ion-card-title class="font-bold">{{order?.name_tms}}</ion-card-title>
+        <ion-card-subtitle>
+          <p>{{order?.item_qty}} Item</p>{{order?.product_ttps}}<p></p>
+          <p>Pembeli: {{order?.name_ttca}}</p>
+          <p>Alamat: {{order?.dynamic_ttca}}, {{order?.static_ttca}}</p>
+          <p>WhatsApp: {{order?.phone_ttca}}</p>
+          <p>Harga: Rp. {{order?.total}}</p>
+        </ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </div>
+</ion-content>
+

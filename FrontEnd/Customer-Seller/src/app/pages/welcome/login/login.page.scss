@@ -1,0 +1,27 @@
+.header {
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+
+    h1 {
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    p {
+        margin-top: 0;
+    }
+    
+}
+
+.forgot-password {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--ion-color-primary);
+        cursor: pointer;
+    }
+}

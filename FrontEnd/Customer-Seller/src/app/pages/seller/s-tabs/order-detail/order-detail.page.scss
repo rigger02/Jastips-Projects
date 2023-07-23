@@ -1,0 +1,67 @@
+.header{
+    background-color: var(--ion-color-secondary);
+    height: 80px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    ion-item{
+        --background: transparent ;
+    }
+}
+
+.toolbar{
+    display: flex;
+
+    .inv{
+        position: absolute;
+        right: 30px;
+
+        h5{
+            font-weight: 600;
+            height: 8px;
+            color: rgb(132, 132, 132);
+        }
+    }
+}
+
+.destination{
+    background-color: aliceblue;
+
+    ion-item{
+        --background: transparent;
+    }
+
+
+
+    .toIcon{
+        font-size: 55px;
+    }
+}
+
+.line{
+    margin-top: 12px;
+}
+
+ion-card{
+    margin: 10px;
+    border-radius: 20px;
+    background-color: aliceblue;
+    padding-bottom: 25px;
+
+    .order{
+        padding: 0 15px 15px 15px        
+    }
+    
+    .product{
+        display: flex;
+        justify-content: space-between;
+        height: 30px;
+    }
+
+}
+
+ion-chip{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}

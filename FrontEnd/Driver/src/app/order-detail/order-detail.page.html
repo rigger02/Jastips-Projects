@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="font-bold">{{store}}</ion-card-title>
+      <ion-card-subtitle color="dark">
+        <p>Pembeli: {{customer}}</p>
+        <p>Alamat: {{cAddress}}</p>
+        <p>WhatsApp: {{phone}}</p><br>
+        <p>Items</p>
+        <div *ngFor="let order of orders">
+          <p>{{order?.name_ttps}}</p><p>{{order?.qty_ttop}}</p>
+        </div>
+        <p>Total Price:</p><p>{{rupiah(total)}}</p>
+        <ion-chip *ngIf="status == 'process'">Ready</ion-chip>
+        <ion-chip *ngIf="status != 'process'">Sudah Diambil</ion-chip>
+      </ion-card-subtitle>
+      <ion-button (click)="takeOrder()" expand="block" fill="clear" shape="round" *ngIf="status == 'process'">
+        Ambil Pesanan
+      </ion-button>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

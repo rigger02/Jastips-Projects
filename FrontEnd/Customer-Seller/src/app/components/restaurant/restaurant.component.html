@@ -1,0 +1,16 @@
+<ion-item lines="none">
+  <ion-thumbnail slot="start">
+    <img [src]="stores.image_tms ? stores.image_tms : 'assets/imgs/1.jpg'" />
+  </ion-thumbnail>
+  <ion-label>
+    <h4>{{stores.name_tms}}</h4>
+    <ion-text color="medium">
+      <p class="pStyle">
+        {{stores.address_tms}}
+      </p>
+    </ion-text>
+    <span>
+      {{stores.status_tms}}
+    </span>
+  </ion-label>
+</ion-item>

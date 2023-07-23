@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-label color="dark">MANAGE ADDRESSES</ion-label></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/c-tabs/orders" (click)="reloadPrev()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+
+  <div *ngIf="isLoading" class="ion-text-center alignSpinner">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+
+  <ion-list *ngIf="!isLoading && addresses?.length > 0">
+    <ion-item-divider>SAVED ADDRESSES</ion-item-divider>
+    <ion-item-group class="ion-padding">
+      <ion-item lines="full" class="ion-no-padding" *ngFor="let address of addresses">
+        <ion-label>
+          <ion-label class="ion-padding-bottom">{{address?.name_ttca}}</ion-label>
+          <ion-text color="medium" class="ion-text-justify">
+            <p class="ion-text-wrap">
+              {{address?.phone_ttca}} 
+            </p>
+            <p>{{address?.static_ttca}} </p><p>{{address?.dynamic_ttca}}</p>
+          </ion-text>
+          <ion-chip *ngIf="address?.isActive_ttca" color="primary" mode="md" outline="true">
+            <ion-label >Aktif</ion-label>
+          </ion-chip>
+          <ion-row>
+            <ion-button fill="clear" color="primary" (click)="editAddress(address?.id_ttca)">EDIT</ion-button>
+            <ion-button fill="clear" color="primary" (click)="deleteAddress(address?.id_ttca)">DELETE</ion-button>
+          </ion-row>
+        </ion-label>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <!-- <ion-modal #modal trigger="address-modal" [initialBreakpoint]="1" [breakpoints]="[0, 0.25, 0.5, 1]">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title class="ion-text-center">Tambah Alamat</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="addAddress()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="form-field">
+          <ion-input type="text" [(ngModel)]="form.name_ttca" [ngModelOptions]="{standalone: true}" placeholder="Nama Lengkap"></ion-input>
+        </div>
+        <div class="form-field">
+          <ion-input type="text" [(ngModel)]="form.phone_ttca" [ngModelOptions]="{standalone: true}" placeholder="No Telpon"></ion-input>
+        </div>
+        <div class="form-field">
+          <ion-input type="text" [(ngModel)]="form.static_ttca" [ngModelOptions]="{standalone: true}" placeholder="Provinsi, Kota, Kecamatan"></ion-input>
+        </div> 
+        <div class="form-field">
+          <ion-input type="text" [(ngModel)]="form.dynamic_ttca" [ngModelOptions]="{standalone: true}" placeholder="Jl,Block, No Rumah"></ion-input>
+        </div>         
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-button fill="outline" color="success" expand="block" class="ion-margin-horizontal" (click)="addAddress()">ADD NEW ADDRESS</ion-button>
+  </ion-toolbar>
+</ion-footer>

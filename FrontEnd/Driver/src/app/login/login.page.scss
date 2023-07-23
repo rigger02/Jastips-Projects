@@ -1,0 +1,16 @@
+ion-header {
+    ion-toolbar {
+      --background: #ffffff;
+      --color: #333333;
+      --ion-color-primary: #3880ff;
+    }
+  
+  .register-link {
+    text-align: center;
+    font-size: 14px;
+    a {
+      color: var(--ion-color-primary);
+      text-decoration: none;
+    }
+  }
+}
